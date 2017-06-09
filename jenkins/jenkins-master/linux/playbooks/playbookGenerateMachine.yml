@@ -1,0 +1,8 @@
+- name: "create docker container"
+  hosts: docker_host 
+  gather_facts: yes 
+  tasks:
+    - docker_container: 
+        image: "{{ image_name }}"
+        name: "{{ container_name }}" 
+

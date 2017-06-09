@@ -1,0 +1,12 @@
+- name: "create docker container"
+  hosts: machine_test 
+  vars:
+    - pipeline_home: "/home/pipeline"
+  tasks:
+    - apt:
+        name: vim
+        state: present
+    - file:
+        path: "{{ pipeline_home }}/playbooks/scriptTest.sh"
+        state: touch 
+      delegate_to: localhost

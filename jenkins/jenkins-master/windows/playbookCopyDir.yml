@@ -1,0 +1,32 @@
+- name: Copie des fichiers
+  hosts: controle 
+  tasks:
+    - name: Copie du script d'installation
+      win_copy:
+        src: /home/pipeline/windows/install.ps1
+        dest: C:\Sources\install.ps1
+        force: yes
+    
+    - name: Copie du script de désinstallation
+      win_copy:
+        src: /home/pipeline/windows/uninstall.ps1
+        dest: C:\Sources\uninstall.ps1
+        force: yes
+    
+    - name: Copie des scripts intermédiaires
+      win_copy: 
+        src: /home/pipeline/windows/scriptInstall.ps1
+        dest: C:\Sources\scriptInstall.ps1 
+        force: yes
+    
+    - name: Copie des scripts intermédiaires
+      win_copy: 
+        src: /home/pipeline/windows/scriptUninstall.ps1
+        dest: C:\Sources\scriptUninstall.ps1 
+        force: yes
+
+    - name: Copie du script d'installation sur la machine cible
+      raw: copy C:\Sources\install.ps1 \\{{ MACHINE }}\Sources 
+    
+    - name: Copie du script d'installation sur la machine cible
+      raw: copy C:\Sources\uninstall.ps1 \\{{ MACHINE }}\Sources 

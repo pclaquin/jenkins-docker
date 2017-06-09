@@ -1,0 +1,6 @@
+- name: "create docker container"
+  hosts: all
+  gather_facts: yes 
+  tasks:
+    - docker: name=test image=slavessh
+              command="sleep 3600" state=started

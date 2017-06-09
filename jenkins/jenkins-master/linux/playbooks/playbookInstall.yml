@@ -1,0 +1,4 @@
+- name: "create docker container"
+  hosts: machine_test 
+  tasks:
+    - script: "{{ workspace }}/linux/playbooks/scriptInstall.sh"

@@ -1,0 +1,5 @@
+- name: Take Snapshot 
+  hosts: controle
+  tasks:
+    - name: Exécution script 
+      script: "/home/pipeline/controle/takeSnapshot.ps1 -machine {{ MACHINE_NAME }} -snapshot {{ SNAPSHOT_NAME }}_end"

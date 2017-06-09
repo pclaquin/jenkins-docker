@@ -1,0 +1,5 @@
+- name: Take a snapshot
+  hosts: controle
+  tasks:
+    - name: Exécution script 
+      script: /home/pipeline/windows/revertSnapshot.ps1 -machine {{ MACHINE }} -snapshot {{ SNAPSHOT }} -user {{ USER }} -password {{ PASSWORD }} -server {{ SERVER }}

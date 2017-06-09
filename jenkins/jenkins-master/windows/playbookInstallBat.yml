@@ -1,0 +1,5 @@
+- name: Installation 
+  hosts: controle
+  tasks:
+    - name: Exécution du script d'installation
+      raw: powershell.exe -NonInteractive C:\Sources\scriptInstallBat.ps1 -server {{ MACHINE }}

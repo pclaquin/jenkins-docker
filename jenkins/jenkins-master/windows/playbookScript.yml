@@ -1,0 +1,5 @@
+- name: Install Apache from an MSI 
+  hosts: controle 
+  tasks:
+    - name: Exécution script 
+      script: /home/pipeline/controle/script.ps1

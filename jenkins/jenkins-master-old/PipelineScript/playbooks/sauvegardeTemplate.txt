@@ -1,0 +1,6 @@
+- name: "create docker container"
+  hosts: all
+  gather_facts: yes 
+  tasks:
+    - command: docker commit IMAGE_NAME
+

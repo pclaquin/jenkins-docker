@@ -1,0 +1,5 @@
+- name: Test de la création d'un dossier 
+  hosts: windows 
+  tasks:
+    - name: Création d'un dossier
+      script: "{{ workspace }}/windows/script.ps1"

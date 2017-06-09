@@ -1,0 +1,18 @@
+- name: "create docker container"
+  vars:	
+    -  log_location: /home/install.log
+    -  string: "Uninstallation Successful"
+    -  file_ok: /home/install.OK
+  hosts: machine_test 
+  tasks:
+    - stat:
+        path: {{ file_ok }}
+      register: statok
+    - fail:
+        msg: "Le fichier {{ file_ok }} existe "
+      when: statok.stat.exists == True 
+    - shell: "cat {{ log_location }}"
+      register: logok
+    - fail:
+	msg: "No log found"
+      when: logok.stdout.find("{{ string}}") == -1 

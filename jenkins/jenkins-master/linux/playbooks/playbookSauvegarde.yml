@@ -1,0 +1,13 @@
+- name: "create docker container"
+  vars: 
+    - images_home: "/home/administrateur/docker/jenkins/jenkins-master/availableImages"
+  hosts: docker_host
+  tasks:
+    - shell: "docker commit {{ image_name }}{{sauvegarde_name}} {{ sauvegarde_name }}"
+    - file: 
+        path: "{{ images_home }}/{{ sauvegarde_name }}"
+        state: touch
+    - fetch: 
+        src: "{{ images_home }}/{{ sauvegarde_name }}"
+        dest: "/home/availableImages/{{ sauvegarde_name }}"
+        flat: yes

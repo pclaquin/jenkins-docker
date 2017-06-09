@@ -1,0 +1,13 @@
+- name: "create docker container"
+  hosts: docker_host
+  tasks:
+    - script: "{{ workspace }}/linux/inventory/createInventoryMachine.sh {{ container_name }}"
+    - fetch: 
+        src: /home/inventory.txt
+        dest: "{{ workspace }}/linux/inventory/inventoryfetched"
+        flat: yes
+    - file:
+        path: /home/inventory.txt
+        state: absent
+    - shell: "cat {{ workspace }}/linux/inventory/inventoryfetched  >> {{ workspace }}/linux/inventory/inventory.txt"
+      delegate_to: localhost

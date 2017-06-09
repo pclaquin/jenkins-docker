@@ -1,0 +1,4 @@
+- name: Test Psexec 
+  hosts: controle 
+  tasks:
+    - raw: powershell.exe -ExecutionPolicy Bypass -NonInteractive "C:\Users\pclaquin\Documents\Scripts\Windows\script.ps1"

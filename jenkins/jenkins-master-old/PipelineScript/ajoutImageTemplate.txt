@@ -1,0 +1,6 @@
+- name: "Ajoute l'image sauvegardée"
+  hosts: all
+  gather_facts: yes 
+  tasks:
+    - docker: name=SAUVEGARDE_NOM image=DOCKER_IMAGE
+              state=absent

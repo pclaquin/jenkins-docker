@@ -1,0 +1,2 @@
+rm inventory.txt
+docker exec NOMSAUVEGARDE ip -f inet addr | grep -v 127.0.0.1 | grep -Po 'inet \K[\d.]+' - >> inventory.txt

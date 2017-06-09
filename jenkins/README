@@ -1,0 +1,11 @@
+---------------------------------------
+Installation Docker on Jenkins
+---------------------------------------
+
+Pour utiliser cet installateur :
+Placez-vous dans le dossier install/scripts
+Lancez le script install1.sh
+Lancez le script install2.sh
+Lancez le script install3.sh
+Lancez le script install4.sh
+

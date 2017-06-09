@@ -1,0 +1,32 @@
+- name: Copie des fichiers
+  hosts: controle 
+  tasks:
+    - name: Copie du script d'installation
+      win_copy:
+        src: /home/pipeline/windows/install.bat
+        dest: C:\Sources\install.bat
+        force: yes
+    
+    - name: Copie du script de désinstallation
+      win_copy:
+        src: /home/pipeline/windows/uninstall.bat
+        dest: C:\Sources\uninstall.bat
+        force: yes
+    
+    - name: Copie des scripts intermédiaires
+      win_copy: 
+        src: /home/pipeline/windows/scriptInstallBat.ps1
+        dest: C:\Sources\scriptInstallBat.ps1
+        force: yes
+    
+    - name: Copie des scripts intermédiaires
+      win_copy: 
+        src: /home/pipeline/windows/scriptUninstallBat.ps1
+        dest: C:\Sources\scriptUninstallBat.ps1
+        force: yes
+
+    - name: Copie du script d'installation sur la machine cible
+      raw: copy C:\Sources\install.bat \\{{ MACHINE }}\Sources 
+    
+    - name: Copie du script d'installation sur la machine cible
+      raw: copy C:\Sources\uninstall.bat \\{{ MACHINE }}\Sources 

@@ -1,0 +1,19 @@
+- name: Création d'un dossier 
+  hosts: controle 
+  tasks:
+    - win_file: 
+        path: C:\Install
+        state: directory
+    - win_file: 
+        path: C:\Sources
+        state: directory
+    - win_acl:
+        path: C:\Sources
+        user: "Tout le monde"
+        type: allow
+        rights: FullControl
+    - win_acl:
+        path: C:\Install
+        user: "Tout le monde" 
+        type: allow
+        rights: FullControl

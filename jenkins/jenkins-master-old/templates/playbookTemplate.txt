@@ -1,0 +1,7 @@
+- name: "create docker container"
+  hosts: all
+  gather_facts: yes 
+  tasks:
+    - docker: 
+        image: "7e58fc44af46" 
+

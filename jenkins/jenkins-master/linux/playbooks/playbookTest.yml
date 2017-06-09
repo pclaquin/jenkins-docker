@@ -1,0 +1,6 @@
+- name: "create docker container"
+  hosts: machine_test 
+  tasks:
+    - file:
+        path: /home/test.OK 
+        state: touch

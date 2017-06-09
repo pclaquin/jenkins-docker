@@ -1,0 +1,30 @@
+node {
+    stage ('Create Machines') {
+        assert SYSTEME || IMAGE : 'Besoin d\'une image ou d\'un système'
+        assert !(SYSTEME && IMAGE) : 'Choisir une image OU un système'
+        if(IMAGE==''){
+            print 'Pas d\'image'
+        
+          
+        }
+        switch(SYSTEME){
+            case "CentOS":
+                print 'Système : CentOS'
+                print 'Lancement des machines CentOS'
+                //Lancement des playbooks
+                break
+            case "Ubuntu":
+                print 'Système : Ubuntu'
+                print 'Lancement des machines Ubuntu'
+                //Lancement des playbooks
+                break
+            case "Debian":
+                print 'Système : Debian'
+                print 'Lancement des machines Debian'
+                //Lancement des playbooks    
+                break
+            default:
+                print 'Erreur : Système non supporté'
+        }
+    }
+}

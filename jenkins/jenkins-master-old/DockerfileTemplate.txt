@@ -1,0 +1,22 @@
+FROM jenkins:latest
+MAINTAINER Pierre Claquin
+
+USER root
+RUN apt-get update -y
+RUN apt-get install build-essential -y
+RUN apt-get install build-essential git-core cmake xsltproc libssl-dev libx11-dev libxext-dev libxinerama-dev -y
+RUN apt-get install libxcursor-dev libxdamage-dev libxv-dev libxkbfile-dev libasound2-dev libcups2-dev libxml2 libxml2-dev -y
+RUN apt-get install libxrandr-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libxi-dev libgstreamer-plugins-base1.0-de -y
+RUN apt-get install ansible -y
+RUN apt-get install rsync sshpass -y
+RUN mkdir /var/log/jenkins
+RUN mkdir /var/cache/jenkins
+RUN chown -R jenkins:jenkins /var/log/jenkins
+RUN chown -R jenkins:jenkins /var/cache/jenkins
+
+COPY availableSystems /home/availableSystems
+COPY availableImages /home/availableImages
+COPY PipelineScript/playbooks /home/playbooks 
+
+ENV JAVA_OPTS="-Xmx8192m"
+ENV ANSIBLE_HOST_KEY_CHECKING=False

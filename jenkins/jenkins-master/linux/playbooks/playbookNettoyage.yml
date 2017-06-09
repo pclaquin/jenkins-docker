@@ -1,0 +1,21 @@
+- name: "create docker container"
+  hosts: docker_host
+  tasks:
+    - shell: "docker stop {{ image_name }}{{ sauvegarde_name}}"
+    - shell: "docker rm {{ image_name }}{{ sauvegarde_name}}"
+    - file: 
+        path: "{{ workspace }}/linux/playbooks/playbookVerifInstall.yml" 
+        state: absent
+      delegate_to: localhost
+    - file:
+        path: "{{ workspace }}/linux/playbooks/playbookVerifUninstall.yml"
+        state: absent
+      delegate_to: localhost
+    - file:
+        path: "{{ workspace  }}/linux/playbooks/scriptInstall.sh"
+        state: absent
+      delegate_to: localhost
+    - file:
+        path: "{{ workspace }}/linux/playbooks/scriptUninstall.sh"
+        state: absent
+      delegate_to: localhost

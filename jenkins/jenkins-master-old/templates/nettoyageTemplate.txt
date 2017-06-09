@@ -1,0 +1,5 @@
+- name: "Erase directory"
+  hosts: all
+  gather_facts: yes 
+  tasks:
+    - file: path=$PIPELINE_HOME/generatedIMAGE_NAME state=absent

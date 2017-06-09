@@ -1,0 +1,5 @@
+- name: Désinstallation 
+  hosts: controle 
+  tasks:
+    - name: Exécution du script de désinstallation
+      script: /home/pipeline/windows/scriptUninstall.ps1 {{ MACHINE }} 
